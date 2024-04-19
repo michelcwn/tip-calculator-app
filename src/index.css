@@ -1,13 +1,256 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Import the Space Mono font with weight 700 */
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+
+/* Color Palette */
+:root {
+  --strong-cyan: hsl(172, 67%, 45%);
+  --cyan: #9fe8df;
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --dark-grayish-cyan: hsl(186, 14%, 43%);
+  --grayish-cyan: hsl(184, 14%, 56%);
+  --light-grayish-cyan: hsl(185, 41%, 84%);
+  --very-light-grayish-cyan: hsl(189, 41%, 97%);
+  --white: hsl(0, 0%, 100%);
+  --error: #e17052;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: var(--light-grayish-cyan);
+  min-height: 100vh;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  color: var(--dark-grayish-cyan);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  letter-spacing: 0.15rem;
+}
+header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+/*CALCULATOR*/
+.calculator {
+  display: flex;
+  background-color: var(--white);
+  padding: 3rem;
+  border-radius: 2rem;
+}
+
+.calculator__input-section {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3rem;
+  width: 35rem;
+}
+
+.calculator__input {
+  background: none; /* Removes any background */
+  border: none; /* Removes the border */
+  outline: none;
+  padding: 1rem;
+  background-color: var(--very-light-grayish-cyan);
+  color: var(--very-dark-cyan);
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: right;
+  padding-right: 2rem;
+  margin-top: 1rem;
+  width: 35rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.calculator__input:focus {
+  border: 2px solid var(--strong-cyan);
+}
+.input-icon {
+  position: absolute;
+  width: 1.2rem;
+  left: 10px;
+  top: 25px;
+}
+.input-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.calculator__subheading {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+/*BUTTONS*/
+.calculator__buttons {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.calculator__button {
+  padding: 1rem 1.5rem;
+  font-size: 2.4rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--very-dark-cyan);
+  color: var(--white);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.calculator__button:hover {
+  background-color: var(--cyan);
+  color: var(--very-dark-cyan);
+}
+
+.calculator__button--custom {
+  background-color: var(--very-light-grayish-cyan);
+  color: var(--very-dark-cyan);
+  width: 100%;
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+}
+
+/*Number of People*/
+
+.calculator__label-container {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*OUTPUT*/
+
+.calculator__output-section {
+  width: 35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  background-color: var(--very-dark-cyan);
+}
+
+.calculator__output-amount {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+.calculator__tip-amount {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.calculator__total-amount {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calculator__description {
+  color: var(--very-light-grayish-cyan);
+}
+.calculator__per-person {
+  color: var(--grayish-cyan);
+  font-size: 1.4rem;
+}
+.calculator__money {
+  font-size: 3.6rem;
+  color: var(--strong-cyan);
+}
+
+.calculator__reset-button {
+  padding: 1.25rem;
+  border: none;
+  background-color: var(--strong-cyan);
+  color: var(--very-dark-cyan);
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.calculator__reset-button:hover {
+  background-color: var(--cyan);
+}
+
+/*HANDLE ERROR*/
+.calculator__error-message {
+  color: var(--error);
+}
+
+/*RESPONSIVE*/
+
+@media (max-width: 800px) {
+  .calculator {
+    flex-direction: column;
+  }
+  .calculator__input-section {
+    margin: 0;
+  }
+  .calculator__output-section {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 415px) {
+  .calculator {
+    align-items: center;
+    padding: 2rem;
+  }
+  .calculator__input-section,
+  .calculator__input {
+    width: 30rem;
+  }
+  .calculator__buttons {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .calculator__output-amount {
+    margin: 1rem;
+  }
+}
+@media (max-width: 375px) {
+  .calculator__input-section,
+  .calculator__input {
+    width: 25rem;
+  }
+
+  .calculator__money {
+    font-size: 2.8rem;
+  }
+  .calculator__output-amount {
+    margin-bottom: 2rem;
+  }
 }
